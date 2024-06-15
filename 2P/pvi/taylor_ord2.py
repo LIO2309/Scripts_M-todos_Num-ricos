@@ -45,9 +45,9 @@ def resolver_edo_segundo_orden(y_double_prime_func, t0, y0, y_prime0, h, num_pas
     t_values, y_values, y_prime_values = taylor_segundo_orden(y_double_prime_func, t0, y0, y_prime0, h, num_pasos)
 
     # Imprimir los resultados en orden t, y, y'
-    print("t\ty\ty'")
+    print("t\t\t y\t\t y'")
     for i in range(len(t_values)):
-        print(f"{t_values[i]}\t{y_values[i]}\t{y_prime_values[i]}")
+        print(f"{t_values[i]:.1f}\t {y_values[i]:.6f}\t {y_prime_values[i]:.6f}")
 
 # Ejemplo de uso
 if __name__ == "__main__":
