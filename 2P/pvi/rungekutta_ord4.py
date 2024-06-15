@@ -1,3 +1,7 @@
+"""
+1) definir y'
+2) definir parametros
+"""
 import numpy as np
 
 def runge_kutta_4(f, a, b, y0, N):
@@ -27,14 +31,15 @@ def runge_kutta_4(f, a, b, y0, N):
 
 # Ejemplo de uso con una ecuación diferencial específica
 # y' = f(t, y) = t - y
+
 def f(t, y):
-    return t - y
+    return t+y**2 #t - y
 
 # Parámetros
 a = 0   # límite inferior
 b = 1   # límite superior
 y0 = 1  # condición inicial
-N = 100  # número de intervalos
+N = 10  # número de intervalos
 
 # Ejecutar el método de Runge-Kutta de orden 4
 t, y = runge_kutta_4(f, a, b, y0, N)
@@ -42,3 +47,12 @@ t, y = runge_kutta_4(f, a, b, y0, N)
 # Imprimir los resultados
 for i in range(len(t)):
     print(f"t[{i}] = {t[i]:.7f}, y[{i}] = {y[i]:.7f}")
+
+"""
+tomar y' como lo de adentro de la integral
+tomar y(0)=0
+"""
+
+"""
+h=(b-a)/N
+"""

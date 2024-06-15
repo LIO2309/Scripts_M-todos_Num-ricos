@@ -84,7 +84,7 @@ import math
  
 ########################################
 
-a = -1  #limite de integracion inferior
+a = 0  #limite de integracion inferior
 b = 1  #limite de integracion superior
 
 intervalos = 4 #número de intervalos
