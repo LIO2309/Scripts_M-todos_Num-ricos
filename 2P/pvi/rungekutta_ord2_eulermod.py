@@ -1,9 +1,7 @@
-"""
-1) definir ecuacion diferencial
-2) definir parametros de entrada
-3) definir numero de decimales
-
-"""
+# Pasos: 
+#   1. definir ecuacion diferencial
+#   2. definir parametros de entrada
+#   3. definir numero de decimales
 
 
 def f(t, y):
@@ -61,4 +59,4 @@ t_result, y_result = runge_kutta_ord2_eulermod(f, a, b, y0, M)
 
 # Imprimimos los valores de t e y de manera ordenada y tabulada
 for i, (t, y) in enumerate(zip(t_result, y_result)):
-    print("t[{}] = {:.7f}\ty[{}] = {:.7f}".format(i, t, i, y))  # Cambiar el número para la cantidad de decimales
+    print("t[{}] = {:.7f}\ty[{}] = {:.7f}".format(i, t, i, y))  # Cambiar el nï¿½mero para la cantidad de decimales

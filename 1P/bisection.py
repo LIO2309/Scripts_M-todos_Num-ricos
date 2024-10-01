@@ -1,7 +1,10 @@
+# Para estos ejercicios tengo que reemplazar directamente los valores que me pide
+
+
 import math as m
 
 def p(x):
-    return (x*x*x+x-4) - 3     #editar funcion
+    return (m.exp(x) - m.sin(x))     #editar funcion
 
 
 def bisect(a, b, f, error):         # a = inicio, b = fin, f = funcion, error = el minimo que quiero
@@ -23,6 +26,6 @@ def bisect(a, b, f, error):         # a = inicio, b = fin, f = funcion, error = 
     return (med, err, steps)
 
 
-ans = bisect(1, 2, p, 0.001) #ext izq, ext der, func, err al que debe ser menor
+ans = bisect(-3.2, -3.1, p, 10**(-3)) #ext izq, ext der, func, err al que debe ser menor
 
-print(f'solucion = {ans[0]}, con un error de {ans[1]} y en {ans[2]} pasos')
+print(f'Solucion: {ans[0]}\nError: {ans[1]}\nPasos: {ans[2]}')

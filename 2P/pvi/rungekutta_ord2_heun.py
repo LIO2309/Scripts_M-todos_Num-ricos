@@ -1,22 +1,18 @@
-"""
-1) definir ecuacion diferencial
-2) definir parametros de entrada
-3) definir numero de decimales
-"""
+# Pasos: 
+#   1. definir ecuacion diferencial
+#   2. definir parametros de entrada
+#   3. definir numero de decimales
 
+import math as m
 
 def f(t, y):
-    """
-    Define la funcion f(t, y) que representa la ecuacion diferencial.
-    Aqui es donde defines tu ecuacion diferencial.
-    """
-    # Por ejemplo, vamos a resolver la ecuacion diferencial y' = t - y
-    return t - y
 
+    return (-(y)**2)        #ecuacion diferencial en funcion de y' 
+
+
+# Implementa el metodo de Runge-Kutta de orden 2 para resolver la ecuacion diferencial
 def runge_kutta_ord2_heun(f, a, b, y0, M):
-    """
-    Implementa el metodo de Runge-Kutta de orden 2 para resolver la ecuacion diferencial.
-    """
+
     # Calculamos h
     h = (b - a) / M
 
@@ -36,8 +32,15 @@ def runge_kutta_ord2_heun(f, a, b, y0, M):
         # Calculamos k2
         k2 = h * f(t + h, y + k1)
 
-        # Calculamos yn+1
+
+        # Calculamos yn+1 
+
+        # Si es Heun
         y += (1/2) * (k1 + k2)
+        
+        # Si es Ralston
+        # y += ((1/3)*k1) + ((2/3)*k2)  
+
 
         # Actualizamos t para el proximo paso
         t += h
@@ -50,9 +53,9 @@ def runge_kutta_ord2_heun(f, a, b, y0, M):
 
 ## Parametros del problema ##
 a = 0  # Punto inicial
-b = 1  # Punto final
+b = 0.1  # Punto final
 y0 = 1  # Condicion inicial
-M = 100 # Numero de pasos
+M = 5 # Numero de pasos
 #############################
 
 # Resolvemos la ecuacion diferencial
