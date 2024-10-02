@@ -1,28 +1,27 @@
-def f(t, y):
-    """
-    Define la función f(t, y) que representa la ecuación diferencial.
-    Aquí es donde defines tu ecuación diferencial.
-    """
-    # Por ejemplo, vamos a resolver la ecuación diferencial y' = t - y
-    return t - y
 
+import math as m
+
+# Define la función f(t, y) que representa la ecuación diferencial
+def f(t, y):
+    return ((y) - 0.5*m.exp((t)/2)*m.sin(5*(t)) + 5*m.exp((t)/2)*m.cos(5*(t)))
+
+
+# Calcula la derivada de f(t, y)
 def f_prime(t, y):
-    """
-    Calcula la derivada de f(t, y).
-    """
+    
     # Calculamos la derivada parcial de f respecto a t
-    df_dt = 1
+    df_dt = -(25.25)*m.exp((t)/2)*m.sin(5*(t))
 
     # Calculamos la derivada parcial de f respecto a y
-    df_dy = -1
+    df_dy = 1
 
     # Devolvemos la derivada de f
     return df_dt + df_dy * f(t, y)
 
+
+# Implementa el método de Taylor de orden 2 para resolver la ecuación diferencial
 def taylor_2(f, f_prime, a, b, y0, M):
-    """
-    Implementa el método de Taylor de orden 2 para resolver la ecuación diferencial.
-    """
+    
     # Calculamos h
     h = (b - a) / M
 
@@ -47,11 +46,12 @@ def taylor_2(f, f_prime, a, b, y0, M):
     return y
 
 # Parámetros del problema
-a = 0  # Punto inicial
-b = 1  # Punto final
-y0 = 1  # Condición inicial
-M = 50  # Número de pasos
+a = 0           # Punto inicial
+b = 1           # Punto final
+y0 = 0          # Condición inicial
+M = 10          # Número de pasos
 
 # Resolvemos la ecuación diferencial
 resultado = taylor_2(f, f_prime, a, b, y0, M)
 print("El resultado de la ecuación diferencial en t =", b, "es y =", resultado)
+print("y(",b,") =", resultado)

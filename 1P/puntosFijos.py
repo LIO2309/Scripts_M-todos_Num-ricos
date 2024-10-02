@@ -1,5 +1,8 @@
 # Básicamente en estos ejercicios me van a dar una función que dependa de x
 
+# Primero hay que igualar la función a 0 y graficarla en geogebra para ver entre qué valores estará la raíz 
+# de esa función. Luego, se necesita la ecuación explícita de  x (hay que despejar x y colocarla en el código). 
+
 # Hay dos tipos de ejercicios:
 #   1. Piden hallar la raíz
 #   2. Piden calcular un cociente entre el error del último paso y el error del paso anteultimo
@@ -34,9 +37,9 @@ def punto_fijo(funcion, x_0, tolerancia, max_pasos):
     return (secuencia,x_1,n, x_1-x_0, cociente)
 
 def f(x):
-    return (6*(1-m.exp(-(x)/5)) + 5)    # Escribo la expresion al despejar x
+    return (m.sqrt(10 / (4+(x)) ))    # Escribo la expresion al despejar x
 
 
-ans = punto_fijo(f, 10, 10**(-9), 100)  #x_0 es el valor entero mas cercano a la raiz
+ans = punto_fijo(f, 2, 10**(-9), 100)  #x_0 es el valor entero mas cercano a la raiz
 
 print(f'Raiz = {ans[1]}\nPasos = {ans[2]}\nError = {ans[3]}\nCociente = {ans[4]}')

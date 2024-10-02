@@ -1,22 +1,22 @@
-# Hay como que dos tipos de ejercicios:
-#   1. los que te dan de una la función y los parámetros entonces ingresas los valores directo
-#   2. te dan como que una ecuación más “rebuscada” que despejas un toque e ingresas los valores
-
 # A partir de la ecuacion que te dan, se necesita: 
 #   1. La derivada
 #   2. El punto cercano a la raiz
 
 # Si ingreso la ecuacion en Wolfram, me da todo lo que necesito #
 
+# Hay como que dos tipos de ejercicios:
+#   1. los que te dan de una la función y los parámetros entonces ingresas los valores directo
+#   2. te dan como que una ecuación más “rebuscada” que despejas un toque e ingresas los valores
+
 
 import math as m
 
 def p(x):   #f
-    return (((x)*m.exp(-x)) + (x) - 5)       #editar funcion
+    return ((x)**3 + 2.967*(x)**2 - 9.46693*(x) - 11.557935)       #editar funcion
     
 
 def dp(x):  #f'
-    return (m.exp(-x)*(m.exp(x) - (x) + 1))      #editar funcion derivada
+    return (3*(x)**2 + 5.934*(x) - 9.46693)      #editar funcion derivada
 
 
 def newton(init, f, df, error):
@@ -39,6 +39,6 @@ def newton(init, f, df, error):
 #   I. a si f(a) tiene el mismo signo que f''(a) 
 #   II. b si f(b) tiene el mismo signo que f''(b)
 
-ans = newton(4, p, dp, 10**(-11))
+ans = newton(3, p, dp, 10**(-11))   
 
 print(f'Solucion: {ans[0]}\nPasos: {ans[1]}\nError: {ans[2]}')

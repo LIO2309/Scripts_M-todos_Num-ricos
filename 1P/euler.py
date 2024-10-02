@@ -1,63 +1,53 @@
+import math as m
 import numpy as np
 import matplotlib.pyplot as plt
-import math as m
 
-def f(t, y): #Esta es la EDO
-    return (t - y)/2 
+# Método de Euler para resolver una EDO de orden 1 con PVI.
+def euler(f, t0, y0, h, n):
 
-def y_real(t):
-    return 3* m.exp(-t/2) + t - 2
+    # Asegurarse de que n sea un entero
+    n = int(n)
 
-def euler_method(f, a, b, M, xin):
+    ts = np.zeros(n+1)
+    ys = np.zeros(n+1)
     
-    # Implementa el metodo de Eueler
-    # :Problema:
-    # y' = f(t,y)
-    # y(a) = xin    (el valor inicial)
-    ts = []
-    ys = []
-    ans=[]
-
-    h = (b - a) / float(M)
-
-    t = a
-    y = xin
-
-    ts.append(a)
-    ys.append(xin)
-    ans.append((a,xin))
-
-    for step in range(M):
-        y += h * f(t, y)
-        t += h
-        ts.append(t)
-        ys.append(y) 
-        ans.append((t,y))
-
-    for i in range(n):
-        t.append(t[i] + h)
-        y.append(round(y[i] + h* f(t[i], y[i]), 3))
-        error.append(abs(ys(ts[i])- ys[i]))
-        
-    plt.xlim(0, 4)
-    plt.ylim(0, 4)
-    plt.scatter(t, y)
-    plt.plot(t, y, c="green")
-
-    x = np.linspace(a, b, 100)
-    y_r = [y_real(i) for i in x] 
-
-    plt.plot(x, y_r, c="red")
-        
-        
-    return ts, ys, ans
-
-ts, ys, ans = euler_method(f, 0, 3, 6,1 )
-
-#print(ys)
-#print(ts)
-print("(t_k, y_k):")
-for i in range(len(ans)):
-    print(f'k={i}: {ans[i]}')
+    ts[0] = t0
+    ys[0] = y0
     
+    # Imprimir encabezado de la tabla
+    print(f"{'Paso':^5} {'t':^10} {'y':^10}")
+    print("-" * 25)
+    print(f"{0:^5} {ts[0]:^10.6f} {ys[0]:^10.6f}")
     
+    for i in range(1, n+1):
+        ys[i] = ys[i-1] + h * f(ts[i-1], ys[i-1])
+        ts[i] = ts[i-1] + h
+        
+        # Imprimir cada fila de la tabla
+        print(f"{i:^5} {ts[i]:^10.6f} {ys[i]:^10.6f}")
+    
+    return ts, ys
+
+# Definimos la función que describe la EDO
+def f(t, y):
+    return ((y) - 0.5*m.exp((t)/2)*m.sin(5*(t)) + 5*m.exp((t)/2)*m.cos(5*(t)))
+
+# Parámetros
+t0 = 0          # valor inicial de t
+y0 = 0          # valor inicial de y (PVI: y(0) = 0)
+a = 0           # extremo izq del intervalo
+b = 1           # extremo der del intervalo
+h = 0.1         # tamaño de paso
+n = (b-a)/h     # número de pasos (debe ser entero)
+
+# Ejecutar el método de Euler
+ts, ys = euler(f, t0, y0, h, n)
+
+# Graficar los resultados
+plt.plot(ts, ys, label='Aproximación Euler')
+plt.xlabel('t')
+plt.ylabel('y')
+plt.title('Solución aproximada usando el método de Euler')
+plt.legend()
+plt.grid(True)
+plt.show()

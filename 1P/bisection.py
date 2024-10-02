@@ -4,7 +4,7 @@
 import math as m
 
 def p(x):
-    return (m.exp(x) - m.sin(x))     #editar funcion
+    return (x**2 - m.sin(x) - 0.5)     #editar funcion
 
 
 def bisect(a, b, f, error):         # a = inicio, b = fin, f = funcion, error = el minimo que quiero
@@ -26,6 +26,6 @@ def bisect(a, b, f, error):         # a = inicio, b = fin, f = funcion, error = 
     return (med, err, steps)
 
 
-ans = bisect(-3.2, -3.1, p, 10**(-3)) #ext izq, ext der, func, err al que debe ser menor
+ans = bisect(0, 2, p, 10**(-3)) #ext izq, ext der, func, err al que debe ser menor
 
 print(f'Solucion: {ans[0]}\nError: {ans[1]}\nPasos: {ans[2]}')
